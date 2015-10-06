@@ -1,0 +1,51 @@
+spring:
+  cloud:
+    config:
+      enabled: false # note this needs to be turned on if you wnat the config server to work
+#      uri: http://localhost:8888/configurationservice
+      label: 1.0.0
+      discovery:
+        enabled: true
+        serviceId: configurationservice
+  profiles:
+    default: development
+    active: development
+  application:
+    name: turbine
+
+info:
+  component: Turbine
+
+server:
+  port: 8989
+
+#
+#security:
+#  basic:
+#    enabled: false
+#  user:
+#    name: libertasuser
+#    password: SecretPassword
+
+management:
+  port: 8990
+  context-path: /manage
+  security:
+    enabled: false
+
+eureka:
+  client:
+    # enable these two settings if you want discovery to work
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      # we use the secure form having user/password in the main
+      defaultZone: http://localhost:8761/eureka/
+  # this describes the actual instance that is registered and parameters around it
+  instance:
+    nonSecurePort: 8990
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /manage/info
+    homePageUrlPath: /manage
+    healthCheckUrlPath: /manage/health
+    preferIpAddress: true

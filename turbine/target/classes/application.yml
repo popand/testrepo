@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: turbine
+  # change this to the production values including the user/password
+  rabbitmq:
+    host: localhost
+    port: 5672
+    #username: guest
+    #password: guest
+
+
+PREFIX:
+  
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+info:
+  app:
+    name: Turbine Server
+    description: The Turbine Server
+    version: 1.0.0.RELEASE
+  build:
+    artifact: turbine
+    name: Spring Cloud Turbine
+    description: Spring Boot Starter Parent
+    version: 1.0.0.RELEASE

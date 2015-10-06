@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- this is a generalized security file for JMX.  It really needs to be personality -->
+<restrict>
+
+    <!--<remote>-->
+        <!--<host>127.0.0.1</host>-->
+    <!--</remote>-->
+
+    <http>
+        <method>get</method>
+    </http>
+
+    <commands>
+        <command>read</command>
+        <command>list</command>
+    </commands>
+
+    <allow>
+        <mbean>
+            <name>java.lang:type=Memory</name>
+            <operation>gc</operation>
+        </mbean>
+    </allow>
+
+    <!--<deny>-->
+        <!--<mbean>-->
+            <!--<name>com.mchange.v2.c3p0:type=PooledDataSource,*</name>-->
+            <!--<attribute>properties</attribute>-->
+        <!--</mbean>-->
+    <!--</deny>-->
+
+</restrict>
